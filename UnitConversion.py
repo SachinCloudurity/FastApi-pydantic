@@ -44,7 +44,7 @@ conversion_functions = {
 # function that takes user input to perform unit conversions based on static or variable multiplication factors.
 def convert(value: float, from_unit: str, to_unit: str) -> float:
     i = f"{from_unit}_to_{to_unit}"
-    if i in conversion_factors:
+    if i in conversion_factors and value>0 :
         return value * conversion_factors[i]
     elif i in conversion_functions:
         return conversion_functions[i](value)
