@@ -32,9 +32,13 @@ conversion_factors = {
 
 #functions for variable multiplication factors.
 def celsius_to_fahrenheit(c: float) -> float:
+    if c < -273.15:
+        raise HTTPException(status_code=400, detail="Temperature below absolute zero is not possible")
     return (c * 9/5) + 32
 
 def fahrenheit_to_celsius(f: float) -> float:
+    if f < -459.67:
+        raise HTTPException(status_code=400, detail="Temperature below absolute zero is not possible")
     return (f - 32) * 5/9
 conversion_functions = {
     "cel_to_far": celsius_to_fahrenheit,
