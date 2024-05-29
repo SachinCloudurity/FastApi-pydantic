@@ -46,8 +46,10 @@ def tobase_convert(value: float, from_unit: str, unit_type: str) -> float:
         if from_unit == 'far':
             return fahrenheit_to_celsius(value)
         return value
-    else:
+    elif value>0:
         return value * conversion_factors[unit_type][from_unit]
+    else: raise HTTPException(status_code=400, detail="Please give positive value for length, weight and time")
+        
 #second function converts every base unit to required unit.
 def frombase_convert(value: float, to_unit: str, unit_type: str) -> float:
     if unit_type == 'temperature':
