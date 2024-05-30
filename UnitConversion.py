@@ -67,8 +67,8 @@ def convert(value: float, from_unit: str, to_unit: str) -> float:
         raise HTTPException(status_code=400, detail=f"Invalid conversion units. Available conversions: {conversions}")
     
     unit_type = list(unit_types.keys())[0]
-    base_value = convert_to_base(value, from_unit, unit_type)
-    result_value = convert_from_base(base_value, to_unit, unit_type)
+    base_value = tobase_convert(value, from_unit, unit_type)
+    result_value = frombase_convert(base_value, to_unit, unit_type)
     return result_value
     
 #takes the input to update the results.
